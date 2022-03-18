@@ -1,0 +1,5 @@
+@mixin add-background-svg($image-name, $image-path: $theme-image-path) {
+  background-image: url("uswds/src/#{$image-path}/#{$image-name}.svg"),
+    linear-gradient(transparent, transparent);
+  background-repeat: no-repeat;
+}
