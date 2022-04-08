@@ -5,6 +5,7 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require("js-yaml");
+const svgSprite = require("eleventy-plugin-svg-sprite");
 const { imageShortcode, imageWithClassShortcode } = require('./config');
 
 module.exports = function (config) {
@@ -14,6 +15,18 @@ module.exports = function (config) {
   // Add plugins
   config.addPlugin(pluginRss);
   config.addPlugin(pluginNavigation);
+  //// SVG Sprite Plugin for USWDS USWDS icons
+  config.addPlugin(svgSprite, {
+    path: "./node_modules/uswds/src/img/uswds-icons",
+    svgSpriteShortcode: 'uswds_icons_sprite',
+    svgShortcode: 'uswds_icons'
+  });
+  //// SVG Sprite Plugin for USWDS USA icons
+  config.addPlugin(svgSprite, {
+    path: "./node_modules/uswds/src/img/usa-icons",
+    svgSpriteShortcode: 'usa_icons_sprite',
+    svgShortcode: 'usa_icons'
+  });
 
   // Allow yaml to be used in the _data dir
   config.addDataExtension("yaml", contents => yaml.load(contents));
@@ -101,6 +114,12 @@ module.exports = function (config) {
   // Set image shortcodes
   config.addLiquidShortcode('image', imageShortcode);
   config.addLiquidShortcode('image_with_class', imageWithClassShortcode);
+  config.addLiquidShortcode("uswds_icon", function (name) {
+    return `
+    <svg class="usa-icon" aria-hidden="true" role="img">
+      <use xlink:href="#svg-${name}"></use>
+    </svg>`;
+  });
 
   return {
     // Control which files Eleventy will process

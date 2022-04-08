@@ -1,7 +1,7 @@
 const path = require('path');
 const Image = require('@11ty/eleventy-img');
 
-module.exports.imageWithClassShortcode = async function imageWithClassShortcode(
+async function imageWithClassShortcode(
   src,
   cls,
   alt
@@ -19,6 +19,11 @@ module.exports.imageWithClassShortcode = async function imageWithClassShortcode(
 };
 
 
-module.exports.imageShortcode = async function imageShortcode(src, alt) {
-  return await this.imageWithClassShortcode(src, '', alt)
+async function imageShortcode(src, alt) {
+  return await imageWithClassShortcode(src, '', alt)
 };
+
+module.exports = {
+  imageWithClassShortcode,
+  imageShortcode
+}
