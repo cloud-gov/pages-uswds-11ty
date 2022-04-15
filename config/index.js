@@ -6,6 +6,12 @@ async function imageWithClassShortcode(
   cls,
   alt
 ) {
+  let pathPrefix = '';
+
+  if (process.env.BASEURL) {
+    pathPrefix = process.env.BASEURL
+  }
+
   const ext = path.extname(src);
   const fileType = ext.replace('.', '');
 
@@ -15,7 +21,7 @@ async function imageWithClassShortcode(
   });
 
   const data = metadata[fileType] ? metadata[fileType][0] : metadata.jpeg[0];
-  return `<img src="${data.url}" class="${cls}" alt="${alt}" loading="lazy" decoding="async">`;
+  return `<img src="${pathPrefix}${data.url}" class="${cls}" alt="${alt}" loading="lazy" decoding="async">`;
 };
 
 
