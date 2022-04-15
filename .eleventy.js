@@ -9,6 +9,9 @@ const svgSprite = require("eleventy-plugin-svg-sprite");
 const { imageShortcode, imageWithClassShortcode } = require('./config');
 
 module.exports = function (config) {
+  // Set pathPrefix for site
+  let pathPrefix = '/';
+
   // Copy the `admin` folders to the output
   config.addPassthroughCopy('admin');
 
@@ -121,6 +124,11 @@ module.exports = function (config) {
     </svg>`;
   });
 
+  // If BASEURL env variable exists, update pathPrefix to the BASEURL
+  if (process.env.BASEURL) {
+    pathPrefix = process.env.BASEURL
+  }
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
@@ -147,7 +155,7 @@ module.exports = function (config) {
     // You can also pass this in on the command line using `--pathprefix`
 
     // Optional (default is shown)
-    pathPrefix: '/',
+    pathPrefix: pathPrefix,
     // -----------------------------------------------------------------
 
     // These are all optional (defaults are shown):
