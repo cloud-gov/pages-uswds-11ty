@@ -163,6 +163,14 @@ For referencing an image with a style class, you will pass the template shortcod
 {% image_with_class "_img/my-image.png" "img-class another-class" "My PNG Image Alternative Name" %}
 ```
 
+### Referencing USWDS Sprite Icons
+
+USWDS has sprite icons available for use. Here is the [list of icons](https://designsystem.digital.gov/components/icon/) available when using the sprite shortcode `uswds_icon` in the template. The following example is how you can reference the icon in a template.
+
+```
+{% uswds_icon "<USWDS sprite name>" %}
+```
+
 ### Expanding SCSS Styles
 
 CSS and SASS can be added or imported into the `styles/styles.scss`. You can also use [USWDS Design Tokens](https://designsystem.digital.gov/design-tokens/) in the `styles/themes` files to update colors, fonts, and layout to fit your site's branding. This template uses [esbuild](https://esbuild.github.io/)and [autoprefixer](https://github.com/postcss/autoprefixer) to bundle your SASS/CSS and fingerprint the files in the site build.

@@ -25,16 +25,16 @@ pagination:
       {% endfor %}
       {% include "pagination-links.html" %}
     </div>
-    <!-- <article aria-label="Other site posts and related links" class="desktop:grid-col-fill margin-top-4 padding-right-4">
+    <article aria-label="Other site posts and related links" class="desktop:grid-col-fill margin-top-4 padding-right-4">
       <div
         class="border-top-1 border-accent-cool-darker padding-top-2 margin-bottom-4 usa-prose"
       >
         <h3 class="">Most Recent Posts</h3>
         <ul class="usa-list usa-list--unstyled padding-top-2">
-          {% for post in site.posts limit:3 %}
+          {% for post in posts limit:3 %}
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{post.url}}"
-              >{{ post.title }}</a
+            <a class="usa-link" href="{{post.url}}"
+              >{{ post.data.title }}</a
             >
           </li>
           {% endfor %}
@@ -46,27 +46,27 @@ pagination:
         <h3>Another list of links</h3>
         <ul class=" usa-list usa-list--unstyled padding-top-2">
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{blog.url}}"
+            <a class="usa-link" href="/blog"
               >Most popular</a
             >
           </li>
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{blog.url}}"
+            <a class="usa-link" href="/blog"
               >Another popular post</a
             >
           </li>
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{blog.url}}"
+            <a class="usa-link" href="/blog"
               >This is popular</a
             >
           </li>
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{blog.url}}"
+            <a class="usa-link" href="/blog"
               >A very long blog header that is popular</a
             >
           </li>
           <li class="padding-bottom-1">
-            <a class="usa-link" href="{{site.baseurl}}{{blog.url}}"
+            <a class="usa-link" href="/blog"
               >A popular post on a blog</a
             >
           </li>
@@ -142,6 +142,6 @@ pagination:
           </li>
         </ul>
       </div>
-    </article> -->
+    </article>
   </div>
 </div>
