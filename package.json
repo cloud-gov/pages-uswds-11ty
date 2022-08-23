@@ -1,6 +1,6 @@
 {
   "name": "11ty-uswds-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A 11ty UWDS template.",
   "main": "index.js",
   "scripts": {
@@ -45,7 +45,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "netlify-cms": "^2.10.187",
+    "netlify-cms": "^2.10.192",
     "uswds": "^2.13.1"
   }
 }
