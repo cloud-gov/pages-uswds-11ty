@@ -1,12 +1,13 @@
 ## Comment out when doing local development
 backend:
   name: github
-  repo: cloud-gov/11ty-uswds-template
-  base_url: https://federalistapp.18f.gov
+  repo: cloud-gov/pages-uswds-11ty
+  base_url: https://pages.cloud.gov
   auth_endpoint: external/auth/github
-  preview_context: federalist/build
-  branch: master
+  preview_context: pages/build
+  branch: main
   use_graphql: true
+
 
 ##
 ## Uncomment when doing local development on Netlify CMS
