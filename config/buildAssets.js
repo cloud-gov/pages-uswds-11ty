@@ -2,7 +2,6 @@ const fs = require('fs/promises');
 const path = require('path');
 const esbuild = require('esbuild');
 const { sassPlugin } = require('esbuild-sass-plugin');
-const { abort } = require('process');
 
 async function createAssetPaths() {
   let pathPrefix = ''
@@ -50,11 +49,13 @@ esbuild
     },
     minify: process.env.ELEVENTY_ENV === 'production',
     sourcemap: process.env.ELEVENTY_ENV !== 'production',
-    plugins: [
-      sassPlugin(),
-      "./node_modules/@uswds",
-      "./node_modules/@uswds/uswds/packages"
-    ],
+    target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
+    plugins: [sassPlugin({
+      loadPaths: [
+        "./node_modules/@uswds",
+        "./node_modules/@uswds/uswds/packages"
+      ]
+    })],
     bundle: true,
   })
   .then(() => createAssetPaths())
