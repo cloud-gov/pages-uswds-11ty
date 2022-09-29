@@ -15,18 +15,23 @@ module.exports = function (config) {
   // Copy the `admin` folders to the output
   config.addPassthroughCopy('admin');
 
+  // Copy USWDS init JS so we can load it in HEAD to prevent banner flashing
+  config.addPassthroughCopy({'./node_modules/@uswds/uswds/dist/js/uswds-init.js': 'assets/js/uswds-init.js'});
+
   // Add plugins
   config.addPlugin(pluginRss);
   config.addPlugin(pluginNavigation);
+
   //// SVG Sprite Plugin for USWDS USWDS icons
   config.addPlugin(svgSprite, {
-    path: "./node_modules/uswds/src/img/uswds-icons",
+    path: "./node_modules/@uswds/uswds/dist/img/uswds-icons",
     svgSpriteShortcode: 'uswds_icons_sprite',
     svgShortcode: 'uswds_icons'
   });
+
   //// SVG Sprite Plugin for USWDS USA icons
   config.addPlugin(svgSprite, {
-    path: "./node_modules/uswds/src/img/usa-icons",
+    path: "./node_modules/@uswds/uswds/dist/img/usa-icons",
     svgSpriteShortcode: 'usa_icons_sprite',
     svgShortcode: 'usa_icons'
   });
