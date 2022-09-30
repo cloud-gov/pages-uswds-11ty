@@ -2,7 +2,7 @@
 
 ## Why this project
 
-This is an [11ty](https://www.11ty.dev/) static site generator (SSG) template using [U.S. Web Design System v 2.0 (USWDS)](https://designsystem.digital.gov/) and is focused on providing developers a starter template and reference implementation for Federalist/Cloud.gov Pages websites.
+This is an [11ty](https://www.11ty.dev/) static site generator (SSG) template using [U.S. Web Design System v 3.0 (USWDS)](https://designsystem.digital.gov/) and is focused on providing developers a starter template and reference implementation for Federalist/Cloud.gov Pages websites.
 
 This project strives to be compliant with requirements set by [21st Century IDEA Act](https://www.meritalk.com/articles/senate-passes-idea-act/). The standards require that a website or digital service:
 
