@@ -6,7 +6,7 @@ const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require("js-yaml");
 const svgSprite = require("eleventy-plugin-svg-sprite");
-const { imageShortcode, imageWithClassShortcode, cssImageUrlShortcode } = require('./config');
+const { imageShortcode, imageWithClassShortcode, imageAssetUrl } = require('./config');
 
 module.exports = function (config) {
   // Set pathPrefix for site
@@ -122,7 +122,7 @@ module.exports = function (config) {
   // Set image shortcodes
   config.addLiquidShortcode('image', imageShortcode);
   config.addLiquidShortcode('image_with_class', imageWithClassShortcode);
-  config.addLiquidShortcode('css_image_url', cssImageUrlShortcode);
+  config.addLiquidShortcode('image_asset_url', imageAssetUrl);
   config.addLiquidShortcode("uswds_icon", function (name) {
     return `
     <svg class="usa-icon" aria-hidden="true" role="img">

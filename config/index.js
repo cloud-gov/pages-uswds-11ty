@@ -33,13 +33,8 @@ async function imageShortcode(src, alt) {
   return await imageWithClassShortcode(src, '', alt)
 };
 
-async function cssImageUrlShortcode(src) {
-  const url = await imageAssetUrl(src);
-  return `url(${url})`;
-};
-
 module.exports = {
   imageWithClassShortcode,
   imageShortcode,
-  cssImageUrlShortcode
+  imageAssetUrl
 }
