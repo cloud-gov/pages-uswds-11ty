@@ -1,11 +1,7 @@
 const path = require('path');
 const Image = require('@11ty/eleventy-img');
 
-async function imageWithClassShortcode(
-  src,
-  cls,
-  alt
-) {
+async function imageAssetUrl(src) {
   let pathPrefix = '';
 
   if (process.env.BASEURL) {
@@ -21,15 +17,29 @@ async function imageWithClassShortcode(
   });
 
   const data = metadata[fileType] ? metadata[fileType][0] : metadata.jpeg[0];
-  return `<img src="${pathPrefix}${data.url}" class="${cls}" alt="${alt}" loading="lazy" decoding="async">`;
+  return `${pathPrefix}${data.url}`;
 };
 
+async function imageWithClassShortcode(
+  src,
+  cls,
+  alt
+) {
+  const url = await imageAssetUrl(src);
+  return `<img src="${url}" class="${cls}" alt="${alt}" loading="lazy" decoding="async">`;
+};
 
 async function imageShortcode(src, alt) {
   return await imageWithClassShortcode(src, '', alt)
 };
 
+async function cssImageUrlShortcode(src) {
+  const url = await imageAssetUrl(src);
+  return `url(${url})`;
+};
+
 module.exports = {
   imageWithClassShortcode,
-  imageShortcode
+  imageShortcode,
+  cssImageUrlShortcode
 }

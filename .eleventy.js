@@ -6,11 +6,11 @@ const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require("js-yaml");
 const svgSprite = require("eleventy-plugin-svg-sprite");
-const { imageShortcode, imageWithClassShortcode } = require('./config');
+const { imageShortcode, imageWithClassShortcode, cssImageUrlShortcode } = require('./config');
 
 module.exports = function (config) {
   // Set pathPrefix for site
-  let pathPrefix = '/';
+  let pathPrefix = './';
 
   // Copy the `admin` folders to the output
   config.addPassthroughCopy('admin');
@@ -86,20 +86,20 @@ module.exports = function (config) {
   });
 
   // Customize Markdown library and settings:
-  let markdownLibrary = markdownIt({
-    html: true,
-    breaks: true,
-    linkify: true,
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: 'after',
-      class: 'direct-link',
-      symbol: '#',
-      level: [1, 2, 3, 4],
-    }),
-    slugify: config.getFilter('slug'),
-  });
-  config.setLibrary('md', markdownLibrary);
+  // let markdownLibrary = markdownIt({
+  //   html: true,
+  //   breaks: true,
+  //   linkify: true,
+  // }).use(markdownItAnchor, {
+  //   permalink: markdownItAnchor.permalink.ariaHidden({
+  //     placement: 'after',
+  //     class: 'direct-link',
+  //     symbol: '#',
+  //     level: [1, 2, 3, 4],
+  //   }),
+  //   slugify: config.getFilter('slug'),
+  // });
+  // config.setLibrary('md', markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)
   config.setBrowserSyncConfig({
@@ -122,6 +122,7 @@ module.exports = function (config) {
   // Set image shortcodes
   config.addLiquidShortcode('image', imageShortcode);
   config.addLiquidShortcode('image_with_class', imageWithClassShortcode);
+  config.addLiquidShortcode('css_image_url', cssImageUrlShortcode);
   config.addLiquidShortcode("uswds_icon", function (name) {
     return `
     <svg class="usa-icon" aria-hidden="true" role="img">
