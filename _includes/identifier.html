@@ -10,9 +10,13 @@ as required by law and policies.
   >
     <div class="usa-identifier__container">
       <div class="usa-identifier__logos">
-        <a href="" class="usa-identifier__logo">
-          {% image_with_class "_img/gsa-logo.svg" "usa-identifier__logo-img" "GSA logo" %}
-        </a>
+        <a href="" class="usa-identifier__logo"
+          ><img
+            class="usa-identifier__logo-img"
+            src="{% image_asset_url '_img/gsa-logo.svg' %}"
+            alt="GSA logo"
+            role="img"
+        /></a>
       </div>
       <section
         class="usa-identifier__identity"

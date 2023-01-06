@@ -11,7 +11,12 @@ official government website
     <header class="usa-banner__header">
       <div class="usa-banner__inner">
         <div class="grid-col-auto">
-          {% image_with_class "./node_modules/@uswds/uswds/dist/img/us_flag_small.png" "usa-banner__header-flag" "U.S. flag" %}
+          <img
+            aria-hidden="true"
+            class="usa-banner__header-flag"
+            src="{% image_asset_url './node_modules/@uswds/uswds/dist/img/us_flag_small.png' %}"
+            alt=""
+          />
         </div>
         <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
           <p class="usa-banner__header-text">
@@ -35,7 +40,13 @@ official government website
     >
       <div class="grid-row grid-gap-lg">
         <div class="usa-banner__guidance tablet:grid-col-6">
-          {% image_with_class "./node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg" "usa-banner__icon usa-media-block__img" "Dot gov" %}
+          <img
+            class="usa-banner__icon usa-media-block__img"
+            src="{% image_asset_url './node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg' %}"
+            role="img"
+            alt=""
+            aria-hidden="true"
+          />
           <div class="usa-media-block__body">
             <p>
               <strong>Official websites use .gov</strong><br />A
@@ -45,7 +56,13 @@ official government website
           </div>
         </div>
         <div class="usa-banner__guidance tablet:grid-col-6">
-          {% image_with_class "./node_modules/@uswds/uswds/dist/img/icon-https.svg" "usa-banner__icon usa-media-block__img" "Https" %}
+          <img
+            class="usa-banner__icon usa-media-block__img"
+            src="{% image_asset_url './node_modules/@uswds/uswds/dist/img/icon-https.svg' %}"
+            role="img"
+            alt=""
+            aria-hidden="true"
+          />
           <div class="usa-media-block__body">
             <p>
               <strong>Secure .gov websites use HTTPS</strong><br />A
