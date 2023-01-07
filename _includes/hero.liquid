@@ -3,7 +3,7 @@
     <div class="grid-container">
       {% if hero.heading %}
         <h1 class="usa-hero__heading font-serif-2xl">
-          <span class="usa-hero__heading--alt">{{ hero.heading }}</span>
+          <span class="usa-hero__heading--alt" data-original-heading="{{ hero.original_heading }}">{{ hero.heading }}</span>
         </h1>
       {% endif %}
       {% if hero.callout %}
