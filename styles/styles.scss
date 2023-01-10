@@ -15,7 +15,7 @@
   $theme-font-type-sans: "inter",
   $theme-font-type-serif: "source-serif-pro",
   $theme-font-sans-custom-stack: "Inter, sans-serif",
-  $theme-font-serif-custom-stack: "Source Serif Pro, serif"
+  $theme-font-serif-custom-stack: "Source Serif Pro, serif",
 );
 
 @forward 'uswds';
@@ -34,6 +34,10 @@ h2:not([class]) {
     border-bottom: solid 5px;
     flex: 1;
   }
+}
+
+h3 {
+  @include typeset("serif", "lg");
 }
 
 // Navigation menu
