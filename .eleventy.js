@@ -112,10 +112,10 @@ module.exports = function (config) {
   });
 
   // Set image shortcodes
-  config.addLiquidShortcode('image', imageShortcode);
-  config.addLiquidShortcode('image_with_class', imageWithClassShortcode);
-  config.addLiquidShortcode('image_asset_url', imageAssetUrl);
-  config.addLiquidShortcode("uswds_icon", function (name) {
+  config.addShortcode('image', imageShortcode);
+  config.addShortcode('image_with_class', imageWithClassShortcode);
+  config.addShortcode('image_asset_url', imageAssetUrl);
+  config.addShortcode("uswds_icon", function (name) {
     return `
     <svg class="usa-icon" aria-hidden="true" role="img">
       <use xlink:href="#svg-${name}"></use>
