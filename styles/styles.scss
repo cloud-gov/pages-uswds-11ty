@@ -23,6 +23,19 @@
 @import "../node_modules/@fontsource/inter/index.css";
 @import "../node_modules/@fontsource/source-serif-pro/index.css";
 
+h2:not([class]) {
+  text-transform: uppercase;
+  display: flex;
+
+  // Add a black horizontal bar following the heading
+  &:after {
+    content: '';
+    margin: auto 0 auto 0.5em;
+    border-bottom: solid 5px;
+    flex: 1;
+  }
+}
+
 // Navigation menu
 .usa-header {
   background-color: black;
