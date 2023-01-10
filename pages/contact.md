@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact/
 eleventyNavigation:
   key: Contact
-  order: 4
+  order: 5
 hero:
   image: _img/hero-contact.png
   heading: Get in touch with us
