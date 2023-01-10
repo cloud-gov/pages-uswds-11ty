@@ -10,7 +10,10 @@ hero:
   heading: Findings to make informed decisions
 ---
 
-* Best Practices
-* Case Studies
-* Workplace Trends
-* Definitions
+## Best Practices
+
+## Case Studies
+
+## Workplace Trends
+
+## Definitions
