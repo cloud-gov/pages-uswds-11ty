@@ -112,9 +112,9 @@ module.exports = function (config) {
   });
 
   // Set image shortcodes
-  config.addShortcode('image', imageShortcode);
-  config.addShortcode('image_with_class', imageWithClassShortcode);
-  config.addShortcode('image_asset_url', imageAssetUrl);
+  config.addAsyncShortcode('image', imageShortcode);
+  config.addAsyncShortcode('image_with_class', imageWithClassShortcode);
+  config.addAsyncShortcode('image_asset_url', imageAssetUrl);
   config.addShortcode("uswds_icon", function (name) {
     return `
     <svg class="usa-icon" aria-hidden="true" role="img">
