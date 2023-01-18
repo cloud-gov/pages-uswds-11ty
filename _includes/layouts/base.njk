@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="{{ pathPrefix }}">
+    <title>{{ title }} - {{ site.title }}</title>
+    <script src="/assets/uswds/js/uswds-init.min.js"></script>
+    <link rel="stylesheet" href="/assets/uswds/css/styles.css">
+  </head>
+  <body>
+    <a class="usa-skipnav " href="#main-content">Skip to main content</a>
+
+    {% if site.banner.enabled %}
+      {% include 'components/banner.njk' if site.banner.enabled %}
+    {% endif %}
+
+    {% if site.header.enabled %}
+      {% include ['components/header.', site.header.type, '.njk'] | join %}
+    {% endif %}
+
+    {% if hero %}
+      {% include 'components/hero.njk' %}
+    {% endif %}
+
+    <main id="main-content">
+      {{ content | safe }}
+    </main>
+
+    {% if site.footer.enabled %}
+      {% include ['components/footer.', site.footer.type, '.njk'] | join %}
+    {% endif %}
+
+    {% if site.identifier.enabled %}
+      {% include 'components/identifier.njk' %}
+    {% endif %}
+
+    <script src="/assets/uswds/js/uswds.min.js"></script>
+  </body>
+</html>
