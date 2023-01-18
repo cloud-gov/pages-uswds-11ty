@@ -1,10 +1,9 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-
 const yaml = require("js-yaml");
 
 module.exports = function(eleventyConfig) {
-  const pathPrefix = process.env.BASEURL || "/workplace/";
+  const pathPrefix = process.env.BASEURL + "/workplace/";
 
   // Copy assets directory
   eleventyConfig.addPassthroughCopy("assets");
