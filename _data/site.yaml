@@ -1,0 +1,17 @@
+title: GSA Workplace
+email: contact@example.gov
+description: The future of federal work is here.
+
+# dap:
+#   agency: GSA
+
+# Site Navigation
+primary_navigation:
+  - name: Offerings
+    url: /offerings/
+  - name: Insights
+    url: /insights/
+  - name: About
+    url: /about/
+  - name: Contact
+    url: /contact/

@@ -1,0 +1,38 @@
+@use 'uswds-core' as * with (
+  $theme-show-notifications: false,
+  $theme-font-path: '../node_modules/@uswds/uswds/dist/fonts',
+  $theme-image-path: '../node_modules/@uswds/uswds/dist/img',
+);
+
+@forward 'uswds';
+
+// Logo area
+.usa-logo {
+  margin-top: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+// Remove the light border between the nav and the main content
+.usa-navbar,
+.usa-header + .usa-hero,
+.usa-header + .usa-section,
+.usa-header + main {
+  border-top: none;
+  border-bottom: none;
+}
+
+// Darken the hero image
+.usa-hero {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, black, black);
+    opacity: 0.4;
+  }
+}

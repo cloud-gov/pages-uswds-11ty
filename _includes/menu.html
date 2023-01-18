@@ -1,0 +1,27 @@
+
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--basic">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      {% include "logo.html" %}
+      <button type="button" class="usa-menu-btn">Menu</button>
+    </div>
+    <nav aria-label="Primary navigation" class="usa-nav">
+      <button type="button" class="usa-nav__close">
+        {% image "./node_modules/@uswds/uswds/dist/img/usa-icons/close.svg" "close" %}
+      </button>
+      {% assign nav_pages = collections.all | eleventyNavigation %}
+      <ul class="usa-nav__primary usa-accordion">
+        {%- for nav_item in nav_pages %}
+          <li class="usa-nav__primary-item">
+            <a
+              class="usa-nav__link{% if nav_item.url == page.url %} usa-current{% endif %}"
+              href="{{ nav_item.url | url }}"
+              ><span>{{ nav_item.title | escape }}</span></a
+            >
+          </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
