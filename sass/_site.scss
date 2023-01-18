@@ -8,7 +8,7 @@
 .wp-header__logo-image {
   @include u-height('full');
 
-  @include at-media(tablet) {
+  @include at-media(desktop) {
     @include u-height(7);
   }
 }
