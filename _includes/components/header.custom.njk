@@ -1,0 +1,83 @@
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended wp-header">
+  <div class="usa-navbar">
+    <div class="usa-logo wp-header__logo">
+      <a href="https://www.gsa.gov/">
+        <img src="{{ site.logo }}" class="wp-header__logo-image" alt="GSA logo">
+        <span class="wp-header__logo-text">U.S. General Services Administration</span>
+      </a>
+    </div>
+    <button type="button" class="usa-menu-btn">Menu</button>
+  </div>
+  <nav aria-label="Primary navigation" class="usa-nav">
+    <div class="usa-nav__inner">
+      <button type="button" class="usa-nav__close">
+        <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+      </button>
+      <div class="wp-header__nav">
+        <div class="wp-header__nav-title">
+          <a href="/" class="wp-header__nav-title-text">{{ site.title }}</a>
+        </div>
+        <div class="wp-header__nav-links">
+          {% set nav = collections.all | eleventyNavigation %}
+          <ul class="usa-nav__primary usa-accordion">
+            {% for entry in nav %}
+              <li class="usa-nav__primary-item">
+                {% if entry.children.length > 0 %}
+                  <button
+                    type="button"
+                    class="usa-accordion__button usa-nav__link usa-current"
+                    aria-expanded="false"
+                    aria-controls="basic-nav-section-{{ entry.key | slugify }}"
+                  >
+                    <span>{{ entry.title }}</span>
+                  </button>
+                  <ul id="basic-nav-section-{{ entry.key | slugify }}" class="usa-nav__submenu">
+                    {% for submenuEntry in entry.children %}
+                      <li class="usa-nav__submenu-item">
+                        <a href="{{ submenuEntry.url }}" class="{% if submenuEntry.url == page.url %}usa-current{% endif %}"><span>{{ submenuEntry.title }}</span></a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <a href="{{ entry.url }}" class="usa-nav-link {% if entry.url == page.url %}usa-current{% endif %}"><span>{{ entry.title }}</span></a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="usa-nav__secondary">
+        <ul class="usa-nav__secondary-links">
+          {% for link in site.header.secondaryLinks %}
+            <li class="usa-nav__secondary-item">
+              <a href="{{ link.href }}">
+                {{ link.text }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+        {% if site.header.search %}
+          <section aria-label="Search component">
+            <form class="usa-search usa-search--small" role="search">
+              <label class="usa-sr-only" for="search-field">Search</label>
+              <input
+                class="usa-input"
+                id="search-field"
+                type="search"
+                name="search"
+              />
+              <button class="usa-button" type="submit">
+                <img
+                  src="/assets/uswds/img/usa-icons-bg/search--white.svg"
+                  class="usa-search__submit-icon"
+                  alt="Search"
+                />
+              </button>
+            </form>
+          </section>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>

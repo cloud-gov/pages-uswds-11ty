@@ -1,0 +1,62 @@
+# GENERAL
+#
+# Configuration options for the overall settings for the website.
+
+title: Workplace
+logo: assets/img/gsa_logo.svg
+
+
+# COMPONENTS
+#
+# The following configuration options are for the USWDS components found in the
+# /_includes/components/ directory.
+
+banner:
+  enabled: true
+
+header:
+  enabled: true
+  type: custom
+  search: true
+  secondaryLinks: []
+
+identifier:
+  enabled: true
+  domain: gsa.gov
+  parentAgency:
+    text: U.S. General Services Administration
+    href: https://www.gsa.gov/
+  logo:
+    src: assets/img/gsa_logo.svg
+    alt: GSA
+  links:
+    - text: About GSA
+      href: https://www.gsa.gov/about-us
+    - text: Accessibility support
+      href: https://www.gsa.gov/website-information/accessibility-aids
+    - text: FOIA requests
+      href: https://www.gsa.gov/reference/freedom-of-information-act-foia
+    - text: No FEAR Act data
+      href: https://www.gsa.gov/reference/civil-rights-programs/notification-and-federal-employee-antidiscrimination-and-retaliation-act-of-2002
+    - text: Office of the Inspector General
+      href: https://www.gsaig.gov/
+    - text: Performance reports
+      href: https://www.gsa.gov/reference/reports/budget-performance
+    - text: Privacy policy
+      href: https://www.gsa.gov/website-information/website-policies
+
+footer:
+  enabled: true
+  type: custom
+  heading: Participate in our community
+  text: Engage with others across government to share best practices and lessons learned
+  contactLinks: []
+  links:
+    - heading: Subscribe to our newsletter
+      icon: mail
+      text: Sign up to get workplace updates
+      href:
+    - heading: Attend an upcoming event
+      icon: event
+      text: Check out our client enrichment series
+      href: https://www.gsa.gov/about-us/events-and-training/gsa-training-programs/training-for-federal-employees/client-enrichment-series
