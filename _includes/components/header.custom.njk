@@ -23,25 +23,7 @@
           <ul class="usa-nav__primary usa-accordion">
             {% for entry in nav %}
               <li class="usa-nav__primary-item">
-                {% if entry.children.length > 0 %}
-                  <button
-                    type="button"
-                    class="usa-accordion__button usa-nav__link usa-current"
-                    aria-expanded="false"
-                    aria-controls="basic-nav-section-{{ entry.key | slugify }}"
-                  >
-                    <span>{{ entry.title }}</span>
-                  </button>
-                  <ul id="basic-nav-section-{{ entry.key | slugify }}" class="usa-nav__submenu">
-                    {% for submenuEntry in entry.children %}
-                      <li class="usa-nav__submenu-item">
-                        <a href="{{ submenuEntry.url }}" class="{% if submenuEntry.url == page.url %}usa-current{% endif %}"><span>{{ submenuEntry.title }}</span></a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% else %}
-                  <a href="{{ entry.url }}" class="usa-nav-link {% if entry.url == page.url %}usa-current{% endif %}"><span>{{ entry.title }}</span></a>
-                {% endif %}
+                <a href="{{ entry.url }}" class="usa-nav-link {% if entry.url == page.url %}usa-current{% endif %}"><span>{{ entry.title }}</span></a>
               </li>
             {% endfor %}
           </ul>
