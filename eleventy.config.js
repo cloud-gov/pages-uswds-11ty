@@ -31,7 +31,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode("feature", featureShortcode);
   eleventyConfig.addPairedShortcode("iconList", iconListShortcode);
   eleventyConfig.addShortcode("iconListItem", iconListItemShortcode);
-  eleventyConfig.addShortcode("alert", alertShortcode);
 
   return {
     pathPrefix,
