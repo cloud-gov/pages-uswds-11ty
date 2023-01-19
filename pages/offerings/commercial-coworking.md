@@ -2,8 +2,8 @@
 layout: layouts/offering
 title: Commercial Coworking
 tagline: Cowork in commercial space
-description: Provide your employees with the option of working in shared commercial office spaces to collaborate with other agencies
-listLinkText: Learn more about commercial coworking
+description: Provide your employees with short-term access to shared commercial office spaces where they can collaborate with teammates or other agencies
+listLinkText: Read more about commercial coworking
 permalink: /offerings/commercial-coworking/
 tags: offerings
 ---
