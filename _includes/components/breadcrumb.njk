@@ -1,0 +1,19 @@
+<div class="wp-breadcrumb">
+  <div class="grid-container">
+    <nav class="usa-breadcrumb" aria-label="Breadcrumbs,,">
+      <ol class="usa-breadcrumb__list">
+        <li class="usa-breadcrumb__list-item">
+          <a href="/" class="usa-breadcrumb__link"><span>Home</span></a>
+        </li>
+        <li class="usa-breadcrumb__list-item">
+          <a href="{{ breadcrumb.parent.href }}" class="usa-breadcrumb__link"
+            ><span>{{ breadcrumb.parent.text }}</span></a
+          >
+        </li>
+        <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
+          <span>{{ title }}</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>

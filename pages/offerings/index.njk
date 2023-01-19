@@ -1,0 +1,52 @@
+---
+layout: layouts/base
+title: Offerings
+permalink: /offerings/
+eleventyNavigation:
+  key: Offerings
+  order: 1
+hero:
+  image: assets/img/hero-offerings.jpg
+  heading: OFFERINGS
+---
+
+<main id="main-content">
+
+  <div class="grid-container">
+    <p class="font-body-lg">
+      GSA is working to create human-centered, sustainable, flexible, and tech-enabled workspaces that provide great value for taxpayers and empower federal agencies to meet their missions better than ever before. Our offerings bring new tools and services to you.
+    </p>
+    <div class="grid-row grid-gap">
+      {% for offering in collections.offerings %}
+        <div class="tablet:grid-col-6">
+          <div class="border-top border-base-light">
+            <h3 class="font-heading-lg">
+              <a class="usa-link text-no-underline" href="{{ offering.url }}">{{ offering.data.tagline }}</a>
+            </h3>
+            <p>
+              {{ offering.data.description }}
+            </p>
+            <p>
+              <a class="usa-link text-no-underline" href="{{ offering.url }}">{{ offering.data.listLinkText }} ➔</a>
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="padding-y-8">
+    {% feature
+      "Wondering about the latest workplace trends and analysis?",
+      "Explore insights",
+      "insights/",
+      "assets/img/offerings-feature.jpg"
+    %}
+  </div>
+
+  <div class="grid-container">
+    <h2>Emerging Offerings</h2>
+    <p>We are working on rolling out additional offerings in FY2023 to help federal agencies with their workplace needs. These offerings are currently being tested and refined prior to launching. Contact your <a href="https://www.gsa.gov/about-us/organization/public-buildings-service/office-of-portfolio-mgmt-customer-engagement/office-of-customer-engagement/account-management-program/pbs-national-customer-leads">Public Buildings Service customer lead</a> to learn more about these initiatives or to volunteer for early user research and pilot programs.</p>
+  </div>
+
+</main>

@@ -20,13 +20,15 @@
       {% include ['components/header.', site.header.type, '.njk'] | join %}
     {% endif %}
 
+    {% if breadcrumb %}
+      {% include 'components/breadcrumb.njk' %}
+    {% endif %}
+
     {% if hero %}
       {% include 'components/hero.njk' %}
     {% endif %}
 
-    <main id="main-content">
-      {{ content | safe }}
-    </main>
+    {{ content | safe }}
 
     {% if site.footer.enabled %}
       {% include ['components/footer.', site.footer.type, '.njk'] | join %}
@@ -37,5 +39,6 @@
     {% endif %}
 
     <script src="/assets/uswds/js/uswds.min.js"></script>
+    <script src="/assets/js/site.js"></script>
   </body>
 </html>

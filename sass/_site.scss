@@ -53,6 +53,15 @@
   justify-content: center;
 }
 
+.wp-breadcrumb {
+  @include u-bg('base-lightest');
+
+  .usa-breadcrumb {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
 // Darken the hero image
 .usa-hero {
   position: relative;
@@ -94,4 +103,16 @@
   img {
     filter: invert(1);
   }
+}
+
+blockquote {
+  @include u-bg('base-lightest');
+  @include u-border-left(1);
+  @include u-border-left('base-light');
+  @include u-margin-x(0);
+  @include u-margin-y(4);
+  @include u-padding(3);
+  @include u-font('serif', 'lg');
+  @include u-color('base-darker');
+  @include u-text('italic');
 }
