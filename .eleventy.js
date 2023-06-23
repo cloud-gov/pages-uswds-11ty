@@ -5,6 +5,10 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require("js-yaml");
+// Note here because package.json doesn't support comments: we specify a
+// dependency on glob@8 to work around a bug in eleventy-plugin-svg-sprite.
+// See https://github.com/patrickxchong/eleventy-plugin-svg-sprite/issues/11
+// and https://github.com/11ta/11ta-template/pull/52.
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const { imageShortcode, imageWithClassShortcode } = require('./config');
 
