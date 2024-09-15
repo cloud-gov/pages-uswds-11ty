@@ -4,18 +4,22 @@ const esbuild = require('esbuild');
 const { sassPlugin } = require('esbuild-sass-plugin');
 
 async function createAssetPaths() {
-  let pathPrefix = ''
+  let pathPrefix = '';
 
   if (process.env.BASEURL) {
-    pathPrefix = process.env.BASEURL
+    pathPrefix = process.env.BASEURL;
   }
 
   const assetPath = path.join(__dirname, '../_site/assets');
-  const assetDirs = await fs.readdir(assetPath);
+  let assetDirs = await fs.readdir(assetPath, { withFileTypes: true });
+  assetDirs = assetDirs
+    .filter((item) => item.isDirectory())
+    .map((item) => item.name);
+
   const assetsFiles = await Promise.all(
     assetDirs.map(async (dir) => {
       const files = await fs.readdir(
-        path.join(__dirname, '../_site/assets', dir)
+        path.join(__dirname, '../_site/assets', dir),
       );
       return files.map((file) => {
         const { name, ext } = path.parse(file);
@@ -41,11 +45,14 @@ esbuild
     outdir: '_site/assets',
     format: 'iife',
     loader: {
-      '.png': 'dataurl',
-      '.svg': 'dataurl',
-      '.ttf': 'dataurl',
-      '.woff': 'dataurl',
-      '.woff2': 'dataurl',
+      '.jpg': 'file',
+      '.gif': 'file',
+      '.png': 'file',
+      '.webp': 'file',
+      '.svg': 'file',
+      '.ttf': 'file',
+      '.woff': 'file',
+      '.woff2': 'file',
     },
     minify: process.env.ELEVENTY_ENV === 'production',
     sourcemap: process.env.ELEVENTY_ENV !== 'production',
