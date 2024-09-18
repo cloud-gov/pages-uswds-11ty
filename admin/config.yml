@@ -26,7 +26,7 @@ backend:
 media_folder: _img/uploads
 public_folder: uploads
 publish_mode: editorial_workflow
-logo_url: https://federalist.18f.gov/assets/images/federalist-logo.png
+logo_url: https://pages.cloud.gov/images/logos/pages-logo-blue.svg
 
 collections:
   - label: Posts
