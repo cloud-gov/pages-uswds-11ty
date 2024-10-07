@@ -50,6 +50,12 @@ module.exports = function (config) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
 
+  // absoluteURL filter
+config.addFilter('absoluteUrl', function(path) {
+  const baseUrl = process.env.BASEURL;
+  return new URL(path, baseUrl).href;
+});
+
   // Get the first `n` elements of a collection.
   config.addFilter('head', (array, n) => {
     if (!Array.isArray(array) || array.length === 0) {
