@@ -119,6 +119,20 @@ module.exports = function (config) {
     ghostMode: false,
   });
 
+  // Set baseurl based on site.yaml definitions and Cloud.gov's BRANCH environment variable
+  let baseUrl = domains.local;
+  if (process.env.BRANCH) {
+    switch (process.env.BRANCH) {
+      case 'main':
+        baseUrl = domains.prod;
+        break;
+      default:
+        baseUrl = `${domains.staging}/${process.env.BRANCH}`;
+        break; 
+    }
+  }
+  config.addGlobalData("baseUrl", baseUrl);
+
   // Set image shortcodes
   config.addLiquidShortcode('image', imageShortcode);
   config.addLiquidShortcode('image_with_class', imageWithClassShortcode);
