@@ -17,7 +17,7 @@
     "dev:debug": "DEBUG=* npx @11ty/eleventy --serve --watch",
     "dev:serve": "npx @11ty/eleventy --serve --watch",
     "dev:cms": "npx decap-server",
-    "federalist": "npm run build",
+    "federalist": "ELEVENTY_ENV=production npm run build",
     "serve": "npx @11ty/eleventy --serve",
     "start": "npx @11ty/eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
