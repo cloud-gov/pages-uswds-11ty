@@ -3,6 +3,28 @@ const path = require('path');
 const esbuild = require('esbuild');
 const { sassPlugin } = require('esbuild-sass-plugin');
 
+async function getFontFiles(assetPath, pathPrefix) {
+  const assetDirs = await fs.readdir(assetPath, {withFileTypes: true});
+  const fonts = await Promise.all(
+    assetDirs.map(async (item) => {
+      const itemPath = path.join(assetPath, item.name);
+      const stats = await fs.lstat(itemPath);
+      if (stats.isFile() && path.extname(item.name) === '.woff2') {
+        return item.name;
+      }
+      return null;
+    })
+  );
+  return fonts.filter(item => item !== null)
+    .map((file) => {
+      const {name, ext} = path.parse(file);
+      const hashedAt = name.lastIndexOf('-');
+      const originalName = name.slice(0, hashedAt);
+      const key = `${originalName}${ext}`;
+      return {[key]: `${pathPrefix}/assets/${file}`};
+    });
+}
+
 async function createAssetPaths() {
   let pathPrefix = '';
 
@@ -12,26 +34,7 @@ async function createAssetPaths() {
 
   const assetPath = path.join(__dirname, '../_site/assets');
   let assetDirs = await fs.readdir(assetPath, { withFileTypes: true });
-  const fontFiles = await Promise.all(
-    assetDirs.map(async (item) => {
-      const itemPath = path.join(assetPath, item.name);
-      const stats = await fs.lstat(itemPath);
-      if (stats.isFile() && path.extname(item.name) === '.woff2') {
-        return item.name;
-      }
-      return null;
-    })
-  ).then(items => items.filter(item => item !== null)
-    .map((file) => {
-      const {name, ext} = path.parse(file);
-      const hashedAt = name.lastIndexOf('-');
-      const originalName = name.slice(0, hashedAt);
-      const key = `${originalName}${ext}`;
-      return {
-        [key]: `${pathPrefix}/assets/${file}`,
-      }
-    })
-  );
+  const fontFiles = await getFontFiles(assetPath, pathPrefix);
 
   assetDirs = assetDirs
     .filter((item) => item.isDirectory())
