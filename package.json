@@ -11,7 +11,7 @@
     "assets:refresh": "npm run assets:clean && npm run assets:build",
     "assets:watch": "chokidar 'js/**' 'styles/**' -c 'npm run assets:refresh' --polling",
     "clean": "rimraf _site",
-    "dev": "npm run clean && npm-run-all -p dev:assets dev:serve",
+    "dev": "npm run clean && npm run assets:build && npm-run-all -p dev:assets dev:serve",
     "dev:clean": "npm run clean && npm run dev",
     "dev:assets": "npm run assets:refresh && npm run assets:watch",
     "dev:debug": "DEBUG=* npx @11ty/eleventy --serve --watch",
