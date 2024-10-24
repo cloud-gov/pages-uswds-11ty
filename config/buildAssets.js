@@ -12,6 +12,27 @@ async function createAssetPaths() {
 
   const assetPath = path.join(__dirname, '../_site/assets');
   let assetDirs = await fs.readdir(assetPath, { withFileTypes: true });
+  const fontFiles = await Promise.all(
+    assetDirs.map(async (item) => {
+      const itemPath = path.join(assetPath, item.name);
+      const stats = await fs.lstat(itemPath);
+      if (stats.isFile() && path.extname(item.name) === '.woff2') {
+        return item.name;
+      }
+      return null;
+    })
+  ).then(items => items.filter(item => item !== null)
+    .map((file) => {
+      const {name, ext} = path.parse(file);
+      const hashedAt = name.lastIndexOf('-');
+      const originalName = name.slice(0, hashedAt);
+      const key = `${originalName}${ext}`;
+      return {
+        [key]: `${pathPrefix}/assets/${file}`,
+      }
+    })
+  );
+
   assetDirs = assetDirs
     .filter((item) => item.isDirectory())
     .map((item) => item.name);
@@ -32,7 +53,7 @@ async function createAssetPaths() {
       });
     })
   );
-  const assets = Object.assign({}, ...assetsFiles.flat());
+  const assets = Object.assign({}, ...assetsFiles.flat(), ...fontFiles.flat());
   const outputData = path.join(__dirname, '../_data/assetPaths.json');
 
   return await fs.writeFile(outputData, JSON.stringify(assets, null, 2));
