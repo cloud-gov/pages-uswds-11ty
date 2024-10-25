@@ -29,9 +29,20 @@ to modify some of the meta-data for the site, this is the place to do it.
   <meta property="og:type" content="article" />
   <link rel="canonical" href="{{ page.url }}" />
   <meta property="og:url" content="{{ page.url }}" />
-  <script async="" src="{{ assetPaths['uswds.js'] }} "></script>
+
+  <script src="{{ assetPaths['uswds-init.js'] }}"></script>
   <!-- CSS
     ================================================== -->
-    <link rel="preload" as="style" href="{{ assetPaths['styles.css'] }}" />
-    <link rel="stylesheet" href="{{ assetPaths['styles.css'] }}" type="text/css" />
+  <link rel="stylesheet" href="{{ assetPaths['styles.css'] }}" type="text/css" />
+
+  {% comment %}
+  Preload only the files that are needed for the content in the initial viewport. This
+  will likely include the fonts needed for the navigation, page heading, and the font needed for the
+  first paragraph of body copy. The `crossorigin` attribute may be required based on the type
+  of asset you wish to preload in order for the preload to work properly.
+  {% endcomment %}
+  <link rel="preload" href="{{ assetPaths['PublicSans-Regular.woff2'] }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ assetPaths['PublicSans-Bold.woff2'] }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ assetPaths['Latin-Merriweather-Bold.woff2'] }}" as="font" type="font/woff2" crossorigin>
+
 </head>
