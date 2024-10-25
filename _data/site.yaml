@@ -98,6 +98,13 @@ searchgov:
   # If you do not want to present search suggestions, set this value to false.
   suggestions: true
 
+  # Used for generating baseurls (important for sitemap.xml to work properly)
+  # Replace prod and staging values with your production URL and your Pages preview URL
+  domains:
+    prod: replaceMe.gov
+    staging:  federalist-replaceMe.sites.pages.cloud.gov/preview/yourOrgName/yourRepoName
+    local: http://localhost:8080
+
 ##########################################################################################
 # The values below here are more advanced and should only be
 # changed if you know what they do
