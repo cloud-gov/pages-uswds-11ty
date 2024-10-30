@@ -7,6 +7,9 @@ description: >- # this means to ignore newlines
 # Twitter handle. Only the handle, not the URL.
 twitter: 18F
 
+# Used to construct absolute URLs throughout the site
+url: "https://your-prod-url-here"
+
 #################################################################
 #
 # Digital Analytics Program (DAP) configuration
