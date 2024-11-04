@@ -8,7 +8,7 @@ description: >- # this means to ignore newlines
 twitter: 18F
 
 # Used to construct absolute URLs throughout the site
-url: "https://your-prod-url-here"
+url: "https://agency-production-url.gov"
 
 #################################################################
 #
