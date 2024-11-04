@@ -48,7 +48,7 @@ async function createAssetPaths() {
       return files.map((file) => {
         const { name, ext } = path.parse(file);
         const hashedAt = name.lastIndexOf('-');
-        const originalName = name.slice(0, hashedAt);
+        const originalName = hashedAt > -1 ? name.slice(0, hashedAt) : name;
         const key = `${originalName}${ext}`;
         return {
           [key]: `${pathPrefix}/assets/${dir}/${file}`,
