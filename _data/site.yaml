@@ -5,7 +5,7 @@ description: >- # this means to ignore newlines
   Aenean et sapien a leo auctor scelerisque quis nec magna. Sed dictum ante a risus vehicula facilisis.
 
 # Twitter handle. Only the handle, not the URL.
-twitter: 18F
+# twitter: agency_name
 
 # Used to construct absolute URLs throughout the site
 url: "https://agency-production-url.gov"
