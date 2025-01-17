@@ -1,3 +1,7 @@
+---
+date: Last Modified
+---
+
 <!DOCTYPE html>
 {% comment %}
 This is used for just about every page. It provides the border around the content.
@@ -14,6 +18,10 @@ The home page uses wide.html layout, since it extends full width of page
   {% include "menu.html" primary_navigation: site.primary_navigation secondary_navigation: site.secondary_navigation %}
 
   {{ content }}
+
+  {%- if page.date -%}
+Last Modified <time class="lastmod" datetime="{{ page.date | htmlDateString }}">{{ page.date | htmlDateString }}</time>
+{%- endif %}
 
   {% include "footer.html" %}
 
