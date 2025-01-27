@@ -102,7 +102,7 @@ The Netlify CMS can be configured in [`/admin/config.yml`](./admin/config.yml) a
 backend:
   name: github
   repo: <your-github-org>/<your-repository-name>
-  base_url: https://federalistapp.18f.gov
+  base_url: https://pages.cloud.gov
   auth_endpoint: external/auth/github
   preview_context: federalist/build
   branch: master
