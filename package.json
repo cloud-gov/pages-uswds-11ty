@@ -45,8 +45,6 @@
   },
   "dependencies": {
     "@uswds/uswds": "^3.8.2",
-    "decap-cms": "^3.3.3",
-    "dompurify": "3.2.4",
-    "trim": "0.0.3"
+    "decap-cms": "^3.3.3"
   }
 }
