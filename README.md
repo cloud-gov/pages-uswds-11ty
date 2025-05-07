@@ -142,7 +142,7 @@ TODO
 For preview links generated on the platform, we automatically set the `pathPrefix` in the [`.eleventy.js`](/.eleventy.js) file base on the `BASEURL` environment variable. We use the built-in 11ty filter for `url` to properly append the prefix path for the linked page.  When adding new links, use the following syntax:
 
 ```liquid
-<a href="{{ '/myDir/' | url }}">Link to My Dir</a>
+<a href="{{ '/myDir/'  }}">Link to My Dir</a>
 ```
 
 See the [11ty docs](https://www.11ty.dev/docs/filters/url/)
