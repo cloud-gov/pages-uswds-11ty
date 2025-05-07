@@ -7,6 +7,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require("js-yaml");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const { imageShortcode, imageWithClassShortcode } = require('./config');
+const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 
 module.exports = function (config) {
   // Set pathPrefix for site
@@ -18,6 +19,7 @@ module.exports = function (config) {
   // Add plugins
   config.addPlugin(pluginRss);
   config.addPlugin(pluginNavigation);
+  config.addPlugin(EleventyHtmlBasePlugin);
 
   //// SVG Sprite Plugin for USWDS USWDS icons
   config.addPlugin(svgSprite, {
