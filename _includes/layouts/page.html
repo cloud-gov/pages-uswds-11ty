@@ -9,8 +9,25 @@ This template is for a single page that does not have a date associated with it.
 <div id="main-content" class="usa-layout-docs usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      {% if sidenav == true %}
-      {% include "sidenav.html" %}
+            {% if sidenav == true %}
+      <aside class="usa-layout-docs-sidenav desktop:grid-col-3 padding-bottom-4">
+        <nav>
+          <ul  class="usa-sidenav">
+            <li class="usa-sidenav__item">
+              <a href={{page.url}} class="usa-current">{{title}}</a>
+              <ul class="usa-sidenav__sublist">
+                {% for item in sidenav_items %}
+                <li class="usa-sidenav__item">
+                  <a href={{item.url}}>
+                    {{item.name}}
+                  </a>
+                </li>
+              {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
       {% endif %}
       <main>
         <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
