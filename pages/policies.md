@@ -19,53 +19,28 @@ sidenav_items:
 ---
 
 ## Accessibility statement
-Blah
+Placeholder text here.
 
 ### Available complaint process
-Blah
+Placeholder text here.
 
 ### Use of the telecommunications relay service
-Blah
+Placeholder text here.
 
 ### Accessibility aids: plug-ins and file viewers
-Blah
+Placeholder text here.
 
 ## Freedom of Information Act (FOIA)
-
-Blah
+Placeholder text here.
 
 ## Equal employment
-
-Blah
+Placeholder text here.
 
 ## External links
-
-Blah
+Placeholder text here.
 
 ## Privacy policy
-
-Blah
+Placeholder text here.
 
 ## Vulnerability disclosure policy
-
-Blah
-
-### Scope
-
-Blah
-
-### Guidelines
-
-Blah
-
-### Legal
-
-Blah
-
-### Reporting a vulnerability
-
-Blah
-
-### Coordinated disclosure
-
-Blah
+Placeholder text here.
