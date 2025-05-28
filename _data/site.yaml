@@ -78,6 +78,24 @@ secondary_navigation:
   - name: Another secondary link
     url: "#main-content"
 
+footer_navigation:
+  - name: Accessibility statement
+    url: "/policies/#accessibility-statement"
+  - name: Freedom of Information Act (FOIA)
+    url: "/policies/#freedom-of-information-act-foia"
+  - name: Equal employment
+    url: "/policies/#equal-employment"
+  - name: External links
+    url: "/policies/#external-links"
+  - name: Privacy policy
+    url: "/policies/#privacy-policy"
+  - name: Vulnerability disclosure policy
+    url: "/policies/#vulnerability-disclosure-policy"
+  - name: Budget and performance reports
+    url: "/reports/"
+  - name: Have a question about government services? Contact USA.gov.
+    url: https://usa.gov/
+
 # Search.gov configuration
 #
 # 1. Create an account with Search.gov https://search.usa.gov/signup
