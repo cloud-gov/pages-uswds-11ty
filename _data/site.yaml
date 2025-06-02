@@ -72,7 +72,11 @@ primary_navigation:
       - name: Navigation link
         url: "#main-content"
   - name: Staff directory
-    url: "/alphabetical/"
+    children:
+      - name: Alphabetical
+        url: "/alphabetical/"
+      - name: Departments
+        url: "/departments/"
 
 secondary_navigation:
   - name: Secondary link
