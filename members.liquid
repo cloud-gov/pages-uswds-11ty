@@ -1,0 +1,42 @@
+---
+layout: layouts/wide
+title: Staff
+pagination:
+  data: staff
+  size: 1
+  alias: member
+
+permalink: "/members/{{ member.id }}/index.html"
+---
+<div id="member-{{ member.id }}" class="bg-primary-darker usa-content font-serif-lg padding-y-6">
+  <div class="grid-container">
+    <h1 class="text-normal text-white margin-0">{{ member.first_name }} {{ member.last_name }}</h1>
+    <span class="text-base-lighter display-block padding-top-1 text-light"
+      >
+        
+        {{ member.job_title }},
+        {{ member.department }}</span
+    >
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-row">
+    <div class="desktop:grid-col-2 tablet:grid-col-4 grid-col-6 padding-y-4">
+      <img class="width-full opacity-30" alt="{{ member.first_name }} {{ member.last_name }}" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0iY3VycmVudENvbG9yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4IDE2VjJDMTggMC45IDE3LjEgMCAxNiAwSDJDMC45IDAgMCAwLjkgMCAyVjE2QzAgMTcuMSAwLjkgMTggMiAxOEgxNkMxNy4xIDE4IDE4IDE3LjEgMTggMTZaTTUuNSAxMC41TDggMTMuNTFMMTEuNSA5TDE2IDE1SDJMNS41IDEwLjVaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg==" />
+      
+    </div>
+    <div class="desktop:grid-col-8 tablet:grid-col-6 usa-prose padding-right-4 padding-y-2">
+      <ul class="add-list-reset padding-0">
+        <li >
+          <a href="mailto:{{member.email}}" class="usa-link">{{ member.email }}</a>
+        </li>
+        <li>
+          {{ member.phone }}
+        </li>
+        <li>
+          {{ member.location }}
+        </li>    
+      </ul> 
+    </div>
+  </div>
+</div>

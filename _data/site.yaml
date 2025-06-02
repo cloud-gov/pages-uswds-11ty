@@ -71,6 +71,8 @@ primary_navigation:
         url: "#main-content"
       - name: Navigation link
         url: "#main-content"
+  - name: Staff directory
+    url: "/alphabetical/"
 
 secondary_navigation:
   - name: Secondary link

@@ -1,8 +1,10 @@
 const { DateTime } = require("luxon");
 const fs = require("fs");
+const path = require("path");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
+const { parse } = require("csv-parse/sync");
 const markdownItNamedHeadings = require("markdown-it-named-headings");
 const yaml = require("js-yaml");
 const svgSprite = require("eleventy-plugin-svg-sprite");
@@ -35,8 +37,43 @@ module.exports = function (config) {
     svgShortcode: "usa_icons"
   });
 
-  // Allow yaml to be used in the _data dir
+  // Allow yaml and CSV to be used in the _data dir
   config.addDataExtension("yaml", contents => yaml.load(contents));
+
+  const csvConfig = {
+    columns: true,
+    skip_empty_lines: true,
+    relax_column_count: true,
+    trim: true,
+  }
+
+  config.addDataExtension("csv", (contents) => {
+    const records = parse(contents, csvConfig);
+    return records;
+  });
+  const staffCsvPath = path.join(__dirname, "_data", "staff.csv");
+  let staff = parse(fs.readFileSync(staffCsvPath, "utf-8"), csvConfig);
+
+  config.addCollection('staffByDept', () => {
+
+    const grouped = {};
+
+    for (const member of staff) {
+      if (!member.department) continue;
+      if (!grouped[member.department]) grouped[member.department] = [];
+      grouped[member.department].push(member);
+    }
+
+    // Sort staff within each department by last name
+    for (const dept in grouped) {
+      grouped[dept].sort((a, b) => a.last_name.localeCompare(b.last_name));
+    }
+    return Object.entries(grouped).map(([name, staff]) => ({ name, staff }));
+  });
+
+  // config.addCollection('allDepartmemts', function () {
+  //   return [...new Set(staff.map((p) => p.department).filter(Boolean))];
+  // })
 
   config.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
