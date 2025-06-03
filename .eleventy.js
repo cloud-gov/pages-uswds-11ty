@@ -51,6 +51,7 @@ module.exports = function (config) {
     const records = parse(contents, csvConfig);
     return records;
   });
+  
 config.addDataExtension("csv", (contents) =>
     parse(contents, {
       columns: true,
@@ -76,6 +77,7 @@ config.addDataExtension("csv", (contents) =>
     }
     return Object.entries(grouped).map(([name, staff]) => ({ name, staff }));
   });
+
   config.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
       "dd LLL yyyy"
