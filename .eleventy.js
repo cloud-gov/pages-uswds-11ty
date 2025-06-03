@@ -51,11 +51,17 @@ module.exports = function (config) {
     const records = parse(contents, csvConfig);
     return records;
   });
-  const staffCsvPath = path.join(__dirname, "_data", "staff.csv");
-  let staff = parse(fs.readFileSync(staffCsvPath, "utf-8"), csvConfig);
+config.addDataExtension("csv", (contents) =>
+    parse(contents, {
+      columns: true,
+      skip_empty_lines: true,
+      relax_column_count: true,
+      trim: true,
+    })
+  );
 
-  config.addCollection('staffByDept', () => {
-
+  config.addCollection("staffByDept", (collection) => {
+    const staff = collection.getAll()[0].data.staff;
     const grouped = {};
 
     for (const member of staff) {
@@ -70,7 +76,6 @@ module.exports = function (config) {
     }
     return Object.entries(grouped).map(([name, staff]) => ({ name, staff }));
   });
-
   config.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
       "dd LLL yyyy"
