@@ -71,10 +71,6 @@ module.exports = function (config) {
     return Object.entries(grouped).map(([name, staff]) => ({ name, staff }));
   });
 
-  // config.addCollection('allDepartmemts', function () {
-  //   return [...new Set(staff.map((p) => p.department).filter(Boolean))];
-  // })
-
   config.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
       "dd LLL yyyy"

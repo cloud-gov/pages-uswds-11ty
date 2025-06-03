@@ -13,7 +13,7 @@ title: Departments
         {% for department in collections.staffByDept %}
           <li>
             <a href="/departments/{{ department.name | slug }}/index.html">
-              {{ department.name }}
+              {{ department.name | escape }}
             </a>
           </li>
         {% endfor %}

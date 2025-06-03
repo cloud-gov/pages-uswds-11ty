@@ -35,7 +35,7 @@
       </a>
     </li>
 
-    {% if first_page_diff >= 3 %}
+    {% if total_pages > 5 and first_page_diff >= 3 %}
       <li
         class="usa-pagination__item usa-pagination__overflow"
         role="presentation"
@@ -82,7 +82,7 @@
     {% endif %}
 
     {% comment %} Show the starting page button links and a trail to the last {% endcomment %}
-    {% if first_page_diff < 3 and last_page_diff >= 3 %}
+    {% if total_pages > 5 and first_page_diff < 3 and last_page_diff >= 3 %}
       {% assign previous_page_number = current_page_number | minus: 1 %}
       {% assign next_page_number = current_page_number | plus: 1 %}
       {% for pageIndex in (previous_page_number..next_page_number) %}
@@ -104,7 +104,7 @@
     {% endif %}
 
     {% comment %} Show the starting page button link, a trail to the last page button links {% endcomment %}
-    {% if first_page_diff >= 3 and last_page_diff < 3 %}
+    {% if  total_pages > 5 and first_page_diff >= 3 and last_page_diff < 3 %}
       {% assign previous_page_number = current_page_number | minus: 1 %}
       {% assign next_page_number = current_page_number | plus: 1 %}
       {% for pageIndex in (previous_page_number..next_page_number) %}
@@ -125,7 +125,7 @@
       {% endfor %}
     {% endif %}
 
-    {% if last_page_diff >= 3 %}
+    {% if total_pages > 5 and last_page_diff >= 3 %}
       <li
         class="usa-pagination__item usa-pagination__overflow"
         role="presentation"
@@ -133,7 +133,6 @@
         <span> … </span>
       </li>
     {% endif %}
-
     <li class="usa-pagination__item usa-pagination__page-no">
       <a
         href="{{ pagination.href.last  }}"

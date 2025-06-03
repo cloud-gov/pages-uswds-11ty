@@ -10,7 +10,7 @@ permalink: "/departments/{{ department.name | slug }}/index.html"
 ---
 <div id="department-{{ department.name | slug }}" class="bg-primary-darker usa-content font-serif-lg padding-y-6">
   <div class="grid-container">
-    <h1 class="text-normal text-white margin-0">{{ department.name }} Department</h1>
+    <h1 class="text-normal text-white margin-0">{{ department.name | escape }} Department</h1>
     <span class="text-base-lighter display-block padding-top-1 text-light"
       >This is a description of the department.</span
     >
