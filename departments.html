@@ -1,0 +1,23 @@
+---
+permalink: /departments/
+layout: layouts/wide
+title: Departments
+---
+
+
+<div class="grid-container">
+  <div class="grid-row">
+    <div class="desktop:grid-col-8 usa-prose padding-right-4 padding-y-4">
+      <h1>All Departments</h1>
+      <ul class="department-list">
+        {% for department in collections.staffByDept %}
+          <li>
+            <a href="/departments/{{ department.name | slug }}/index.html">
+              {{ department.name | escape }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

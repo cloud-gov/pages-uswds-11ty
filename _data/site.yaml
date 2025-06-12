@@ -71,10 +71,14 @@ primary_navigation:
         url: "#main-content"
       - name: Navigation link
         url: "#main-content"
+  - name: Departments
+    children:
+      use_collection: "staffByDept"
+
 
 secondary_navigation:
-  - name: Secondary link
-    url: "#main-content"
+  - name: Staff Directory
+    url: "/staff-directory/"
   - name: Another secondary link
     url: "#main-content"
 

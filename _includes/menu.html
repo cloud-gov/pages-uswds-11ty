@@ -8,8 +8,8 @@ manage your navigation system {% endcomment %}
     <button class="usa-menu-btn">Menu</button>
   </div>
   <nav
-    id="menu-navigation"
-    aria-label="Menu navigation"
+    id="staff-menu-navigation"
+    aria-label="Staff Menu navigation"
     role="navigation"
     class="usa-nav"
   >
@@ -40,13 +40,24 @@ manage your navigation system {% endcomment %}
             <span>{{ nav_item.name | escape }}</span>
           </button>
           <ul id="{{ nav_id }}" class="usa-nav__submenu">
-            {% for subnav_item in nav_item.children %}
-            <li class="usa-nav__submenu-item">
-              <a href="{{ subnav_item.url  }}"
-                >{{ subnav_item.name | escape }}</a
-              >
-            </li>
-            {% endfor %}
+            {% unless nav_item.children.use_collection %}
+              {% for subnav_item in nav_item.children %}
+              <li class="usa-nav__submenu-item">
+                <a href="{{ subnav_item.url  }}"
+                  >{{ subnav_item.name | escape }}</a
+                >
+              </li>
+              {% endfor %}
+            {% else %}
+              {% assign subnav_collection = collections[nav_item.children.use_collection] %}
+              {% for subnav_item in subnav_collection %}
+                <li class="usa-nav__submenu-item">
+                  <a href="/departments/{{ subnav_item.name | slug }}/index.html"
+                    >{{ subnav_item.name | escape }}</a
+                  >
+                </li>
+              {% endfor %}
+            {% endunless %} 
           </ul>
         </li>
         {% endunless %} {% endfor %}

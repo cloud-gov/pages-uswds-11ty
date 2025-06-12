@@ -1,0 +1,70 @@
+---js
+{
+  layout: "layouts/wide",
+  title: "Staff",
+  pagination: {
+    data: "staff",
+    size: 8,
+    alias: "staff",
+    before: function(paginationData, fullData) {
+      return paginationData.sort((a, b) => a.last_name.localeCompare(b.last_name));
+    },
+  },
+}
+---
+
+<div id="blog" class="bg-primary-darker usa-content font-serif-lg padding-y-6">
+  <div class="grid-container">
+    <h1 class="text-normal text-white margin-0">Alphabetical Listing</h1>
+    <span class="text-base-lighter display-block padding-top-1 text-light"
+      >This is a description of the page.</span
+    >
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-row">
+    <div class="desktop:grid-col-8 usa-prose padding-right-4 padding-y-4">
+      <!-- This loops through the paginated posts -->
+      {%- for member in staff %}
+        {% include "directory-item.html" member: member %}
+      {% endfor %}
+      <hr />
+      {% include "pagination-links.html" %}
+    </div>
+    <div aria-label="Other site posts and related links" class="desktop:grid-col-fill margin-top-4 padding-right-4">
+    
+      <div
+        class="border-top-1 border-accent-cool-darker padding-top-2 margin-bottom-4 usa-prose"
+      >
+        <h3>Another list of links</h3>
+        <ul class=" usa-list usa-list--unstyled padding-top-2">
+          <li class="padding-bottom-1">
+            <a class="usa-link" href="/blog"
+              >Most popular</a
+            >
+          </li>
+          <li class="padding-bottom-1">
+            <a class="usa-link" href="/blog"
+              >Another popular post</a
+            >
+          </li>
+          <li class="padding-bottom-1">
+            <a class="usa-link" href="/blog"
+              >This is popular</a
+            >
+          </li>
+          <li class="padding-bottom-1">
+            <a class="usa-link" href="/blog"
+              >A very long blog header that is popular</a
+            >
+          </li>
+          <li class="padding-bottom-1">
+            <a class="usa-link" href="/blog"
+              >A popular post on a blog</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+---
+layout: layouts/wide
+title: Staff
+pagination:
+  data: collections.staffByDept
+  size: 1
+  alias: department
+
+permalink: "/departments/{{ department.name | slug }}/index.html"
+---
+<div id="department-{{ department.name | slug }}" class="bg-primary-darker usa-content font-serif-lg padding-y-6">
+  <div class="grid-container">
+    <h1 class="text-normal text-white margin-0">{{ department.name | escape }} Department</h1>
+    <span class="text-base-lighter display-block padding-top-1 text-light"
+      >This is a description of the department.</span
+    >
+  </div>
+</div>
+<div class="grid-container">
+  <div class="grid-row">
+    <div class="desktop:grid-col-8 usa-prose padding-right-4 padding-y-4">
+    {%- for member in department.staff %}
+      {% include "directory-item.html" member: member %}
+    {% endfor %}
+    <hr />
+    </div>
+  </div>
+</div>
