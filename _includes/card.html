@@ -1,0 +1,18 @@
+<li class="usa-card desktop:grid-col-4" markdown="0">
+  <div class="usa-card__container">
+    <div class="usa-card__header">
+      <h4 class="usa-card__heading">{{- title -}}</h4>
+      {%- if sub_title -%}
+        <h5 class="margin-0">{{- sub_title -}}</h5>
+      {%- endif -%}
+    </div>
+    {%- if photo -%}
+      <div class="usa-card__media">
+        <div class="usa-card__img add-aspect-9x16 border border-base-lighter">
+          <img src="{{- photo -}}" alt="{{- title -}}" width="600">
+        </div>
+      </div>
+    {%- endif -%}
+    <div class="usa-card__body">{{- body -}}</div>
+  </div>
+</li>

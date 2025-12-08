@@ -1,59 +1,30 @@
-{% comment %}
-Use this section to highlight key elements of your site. Some
-sites will only have two while others may have six to eight.
-{% endcomment %}
-
-<section class="usa-graphic-list usa-section usa-section--dark">
-  <div class="grid-container">
-    <div class="usa-graphic-list__row grid-row grid-gap">
-      <div class="usa-media-block tablet:grid-col">
-        {% image_with_class  "./node_modules/@uswds/uswds/dist/img/circle-124.png" "usa-media-block__img" "alt text" %}
-        <div class="usa-media-block__body">
-          <h3 class="usa-graphic-list__heading">Graphic headings can vary.</h3>
-          <p>
-            Graphic headings can be used a few different ways, depending on what
-            your landing page is for. Highlight your values, specific program
-            areas, or results.
-          </p>
-        </div>
-      </div>
-      <div class="usa-media-block tablet:grid-col">
-        {% image_with_class  "./node_modules/@uswds/uswds/dist/img/circle-124.png" "usa-media-block__img" "alt text" %}
-        <div class="usa-media-block__body">
-          <h3 class="usa-graphic-list__heading">Stick to 6 or fewer words.</h3>
-          <p>
-            Keep body text to about 30 words. They can be shorter, but try to be
-            somewhat balanced across all four. It creates a clean appearance
-            with good spacing.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="usa-graphic-list__row grid-row grid-gap">
-      <div class="usa-media-block tablet:grid-col">
-        {% image_with_class  "./node_modules/@uswds/uswds/dist/img/circle-124.png" "usa-media-block__img" "alt text" %}
-        <div class="usa-media-block__body">
-          <h3 class="usa-graphic-list__heading">
-            Never highlight anything without a goal.
-          </h3>
-          <p>
-            For anything you want to highlight here, understand what your users
-            know now, and what activity or impression you want from them after
-            they see it.
-          </p>
-        </div>
-      </div>
-      <div class="usa-media-block tablet:grid-col">
-        {% image_with_class  "./node_modules/@uswds/uswds/dist/img/circle-124.png" "usa-media-block__img" "alt text" %}
-        <div class="usa-media-block__body">
-          <h3 class="usa-graphic-list__heading">Could also have 2 or 6.</h3>
-          <p>
-            In addition to your goal, find out your users’ goals. What do they
-            want to know or do that supports your mission? Use these headings to
-            show those.
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="tan-bg">
+  {%- if site.alert and site.alert.enabled -%}
+    {% include 'alert.html' %}
+  {%- endif -%}
+  <div class="grid-container margin-y-6">
+    <h2 class="font-heading-xl text-primary">Featured topics</h2>
+    <ul class="usa-card-group">
+      {%- for t in topics -%}
+        <li class="usa-card usa-card--flag desktop:grid-col-6">
+          <div class="usa-card__container">
+            <div class="usa-card__header">
+              <h4 class="usa-card__heading">{{ t.title }}</h4>
+            </div>
+            <div class="usa-card__media add-aspect-1x1">
+              <div class="usa-card__img">
+                <img src="{{ t.img }}" alt="{{ t.alt }}">
+              </div>
+            </div>
+            <div class="usa-card__body">
+              <p>{{ t.body }}</p>
+            </div>
+            <div class="usa-card__footer">
+              <a href="{{ t.url }}" class="usa-button">{{ t.buttontext }}</a>
+            </div>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
   </div>
-</section>
+</div>

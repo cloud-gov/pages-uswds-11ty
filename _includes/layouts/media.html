@@ -1,0 +1,19 @@
+---
+layout: layouts/default
+---
+<div class="margin-y-2">
+  {%- if vimeoId -%}
+    {% include 'vimeo.html',
+      id: vimeoId,
+      title: title,
+      video_caption: video_caption,
+      autoplay: autoplay,
+      muted: muted,
+      loop: loop,
+      playsinline: playsinline,
+      aspect_ratio: aspect_ratio
+    %}
+  {%- endif -%}
+</div>
+
+{{ content }}

@@ -1,26 +1,26 @@
 <li class="usa-collection__item">
-  {% if post.data.image %}
-    {% assign imagepath="./_img/" | append: post.data.image %}
-    {% image_with_class imagepath "usa-collection__img" post.data.image_alt_text %}
-  {% endif %}
+  {%- if post.data.image -%}
+    <img src="{{post.data.image}}" class="usa-collection__img" alt="{{post.data.image_alt_text}}">
+  {%- endif -%}
   <div class="usa-collection__body">
     <h3 class="usa-collection__heading">
       <a
         class="usa-link"
         href="{{ post.url }}"
-        >{{ post.data.title }}</a
       >
+        {{- post.data.title -}}
+      </a>
     </h3>
     <p class="usa-collection__description">
-      {{ post.templateContent | truncatewords: 10 }}
+      {{- post.templateContent | strip_html | truncatewords: 30 -}}
     </p>
     <ul class="usa-collection__meta" aria-label="More information">
       <li class="usa-collection__meta-item">
-        {{ post.data.author }}
+        {{- post.data.author -}}
       </li>
       <li class="usa-collection__meta-item">
         <time datetime="{{ post.date | date: '%Y-%m-%dT12:00:00+01:00' }}">
-          {{ post.date | date: '%B %d, %Y' }}
+          {{- post.date | date: '%B %d, %Y' -}}
         </time>
       </li>
     </ul>

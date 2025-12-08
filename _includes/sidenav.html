@@ -1,51 +1,55 @@
-{% comment %} 
-The sidenav is not loaded by default on the main pages. To include this navigation you can either use the
-_layouts/page.html layout template, or you can add "sidenav: true" in the front-matter of your pages
-{% endcomment %}
+{% assign navPages = collections.all | eleventyNavigation %}
+{% assign currentUrl = page.url %}
+{% assign currentSection = false %}
 
-<aside class="usa-layout-docs-sidenav desktop:grid-col-3 padding-bottom-4">
+{%- for entry in navPages[0].children -%}
+  {%- if entry.url and currentUrl contains entry.url -%}
+    {%- assign currentSection = entry -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<aside
+  id="section-nav"
+  class="usa-layout-docs-sidenav desktop:grid-col-3 padding-y-4"
+>
   <nav>
-    <ul class="usa-sidenav">
-      <li class="usa-sidenav__item">
-        <a href="">Parent link</a>
-      </li>
-      <li class="usa-sidenav__item">
-        <a href="" class="usa-current">Current page</a>
-        <ul class="usa-sidenav__sublist">
+    <div class="text-uppercase text-bold margin-left-2 margin-y-2 text-ls-2">In this section:</div>
+    {%- if currentSection -%}
+      <ul class="usa-sidenav">
+        {%- for child in currentSection.children -%}
           <li class="usa-sidenav__item">
-            <a href="">Child link</a>
+            <a
+              href="{{ child.url }}"
+              {%- if child.url == currentUrl -%}
+                class="usa-current"
+              {%- endif -%}
+            >
+              {{ child.title }}
+            </a>
+            {%- if child.children.size > 0 -%}
+              <ul class="usa-sidenav__sublist">
+                {%- for grandchild in child.children -%}
+                  {%- unless grandchild.hideInSideNav -%}
+                    <li class="usa-sidenav__item font-sans-2xs">
+                      <a
+                        href="{{ grandchild.url }}"
+                        {%- if grandchild.url == currentUrl -%}
+                          class="usa-current"
+                        {%- endif -%}
+                      >
+                        {{ grandchild.title }}
+                      </a>
+                    </li>
+                  {%- endunless -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
           </li>
-          <li class="usa-sidenav__item">
-            <a href="" class="usa-current">Child link</a>
-            <ul class="usa-sidenav__sublist">
-              <li class="usa-sidenav__item">
-                <a href="">Grandchild link</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="">Grandchild link</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="" class="usa-current">Grandchild link</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="">Grandchild link</a>
-              </li>
-            </ul>
-          </li>
-          <li class="usa-sidenav__item">
-            <a href="">Child link</a>
-          </li>
-          <li class="usa-sidenav__item">
-            <a href="">Child link</a>
-          </li>
-          <li class="usa-sidenav__item">
-            <a href="">Child link</a>
-          </li>
-        </ul>
-      </li>
-      <li class="usa-sidenav__item">
-        <a href="">Parent link</a>
-      </li>
-    </ul>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p>No navigation found for this section.</p>
+    {%- endif -%}
   </nav>
 </aside>

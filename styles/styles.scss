@@ -1,9 +1,54 @@
-@use 'uswds-core' as * with (
+@use "uswds-core" as * with (
+  $theme-utility-breakpoints: (
+    "card": false,
+    "card-lg": false,
+    "mobile": false,
+    "mobile-lg": true,
+    "tablet": true,
+    "tablet-lg": false,
+    "desktop": true,
+    "desktop-lg": true,
+    "widescreen": true,
+  ),
+  $theme-identifier-max-width: "desktop-lg",
+  $theme-footer-max-width: "desktop-lg",
+  $theme-header-max-width: "desktop-lg",
+  $theme-banner-max-width: "desktop-lg",
+  $theme-grid-container-max-width: "desktop-lg",
+  $theme-site-margins-breakpoint: "desktop-lg",
+  $theme-site-alert-max-width: "desktop-lg",
   $theme-show-notifications: false,
-  $theme-font-path: '../node_modules/@uswds/uswds/dist/fonts',
-  $theme-image-path: '../node_modules/@uswds/uswds/dist/img',
-  $theme-font-type-sans: 'public-sans',
-  $theme-hero-image: '../_img/hero.png'
+  $theme-font-path: "../node_modules/@uswds/uswds/dist/fonts",
+  $theme-image-path: "../node_modules/@uswds/uswds/dist/img",
+  $theme-font-type-sans: "public-sans",
+  $theme-lead-font-size: "md",
+  $theme-hero-image: "../node_modules/@uswds/uswds/dist/img/hero.jpg",
+  $theme-body-font-size: "md",
+  $theme-h1-font-size: "xl",
+  $theme-h2-font-size: "lg",
+  $theme-h3-font-size: "sm",
+  $theme-h4-font-size: "xs",
+  $theme-text-measure: 6,
+  $text-align-settings: (
+    responsive: true,
+  ),
+  $background-color-settings: (
+    responsive: true,
+  ),
+  $color-settings: (
+    responsive: true,
+  )
 );
 
-@forward 'uswds';
+@forward "uswds";
+
+img {
+  height: auto;
+}
+
+.logo-placeholder {
+  background-color: #f2f2f2;
+  border: 1px solid #dfe1e2;
+  padding: 0.15rem;
+  border-radius: 50%;
+}

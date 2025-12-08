@@ -1,12 +1,28 @@
 ---
 layout: layouts/base
 ---
-
-{% comment %}
-This is used for just about every page. It provides the border around the content.
-The home page uses wide.html layout, since it extends full width of page
-{% endcomment %}
-
-<main id="main-content">
-  {{ content }}
-</main>
+<div class="tan-bg">
+  {%- if site.alert and site.alert.enabled -%}
+    {% include 'alert-slim.html' %}
+  {%- endif -%}
+  <div id="main-content" class="usa-layout-docs usa-section padding-y-2">
+    <div class="grid-container">
+      <div class="grid-row grid-gap">
+        {% if sidenav == true %}{% include 'sidenav.html' %}{% endif %}
+        <main
+          class="usa-layout-docs__main {% if sidenav == true %}desktop:grid-col-9{% else %}desktop:grid-col-12{% endif %}"
+        >
+          <div class="bg-white padding-4 radius-lg shadow-1 width-full">
+            <div class="usa-prose">
+              <h1>{{ title }}</h1>
+              {% if lead %}
+                <p class="usa-intro margin-bottom-4">{{ lead }}</p>
+              {% endif %}
+              {{ content }}
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

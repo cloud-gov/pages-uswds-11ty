@@ -117,6 +117,7 @@ web_modules/
 .pnp.*
 
 # 11ty Related
+.cache
 _site
 public
 node_modules

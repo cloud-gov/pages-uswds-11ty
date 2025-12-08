@@ -1,13 +1,12 @@
 ## Comment out when doing local development
-backend:
-  name: github
-  repo: cloud-gov/pages-uswds-11ty
-  base_url: https://pages.cloud.gov
-  auth_endpoint: external/auth/github
-  preview_context: pages/build
-  branch: main
-  use_graphql: true
-
+# backend:
+#   name: github
+#   repo: MyAgency/site
+#   base_url: https://pages.cloud.gov
+#   auth_endpoint: external/auth/github
+#   preview_context: pages/build
+#   branch: main
+#   use_graphql: true
 
 ##
 ## Uncomment when doing local development on Netlify CMS
@@ -16,50 +15,124 @@ backend:
 ## See https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 ##
 
-# backend:
-#   name: git-gateway
-# local_backend: true
+backend:
+  name: git-gateway
+local_backend: true
 
-##
-##
-
-media_folder: _img/uploads
-public_folder: uploads
+media_folder: img
+public_folder: /img
 publish_mode: editorial_workflow
 logo_url: https://pages.cloud.gov/images/logos/pages-logo-blue.svg
 
+editor:
+  preview: false
+
 collections:
-  - label: Posts
-    name: posts
-    folder: posts/
+  - name: "announcements"
+    label: "Announcements"
+    folder: "collections/announcements"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: false
+    slug: "{{date}}-{{slug}}"
+    summary: "[{{date}}] {{title}}"
     fields:
-      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'layouts/post'}
-      - {label: 'Tags', name: 'tags', widget: 'hidden', default: ['posts']}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string"}
+      - { label: "Title", name: "title", widget: "string" }
       - {
-          label: "Publish Date",
+          label: "Created",
           name: "date",
+          date_format: "YYYY-MM-DD",
+          default: "{{now}}",
           widget: "datetime",
-          format: 'YYYY-MM-DD',
-          dateFormat: 'YYYY-MM-DD',
-          timeFormat: false
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "media"
+    label: "Media Gallery"
+    folder: "collections/media"
+    create: true
+    editor:
+      preview: false
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Created",
+          name: "date",
+          date_format: "YYYY-MM-DD",
+          default: "{{now}}",
+          widget: "datetime",
         }
       - {
-        label: "Image",
-        name: "image",
-        widget: "image",
-        allow_multiple: false,
-        required: false
+          label: "Vimeo ID",
+          name: "vimeoId",
+          widget: "string",
+          hint: "The numeric ID from the Vimeo URL (e.g. https://vimeo.com/123456789 -> 123456789)",
         }
       - {
-        label: "Image Alt Text",
-        name: "image_alt_text",
-        widget: "string",
-        required: false
+          label: "Description",
+          name: "description",
+          widget: "text",
+          hint: "Short teaser shown on the gallery card.",
+          required: false,
         }
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {
+          label: "Thumbnail",
+          name: "thumbnail",
+          widget: "image",
+          required: true,
+          hint: "Upload a thumbnail image for this video.",
+          allow_multiple: false,
+          choose_url: false,
+        }
+      - {
+          label: "Thumbnail Alt Text",
+          name: "thumbnail_alt",
+          widget: "string",
+          required: false,
+          hint: "Describe the thumbnail image for accessibility.",
+        }
+      - {
+          label: "Video Caption",
+          name: "video_caption",
+          widget: "string",
+          required: false,
+          hint: "Optional caption displayed under the player.",
+        }
+      - {
+          label: "Aspect Ratio",
+          name: "aspect_ratio",
+          widget: "string",
+          required: false,
+          default: "16/9",
+          hint: "Format like 16/9 to control the embed aspect ratio.",
+        }
+      - {
+          label: "Autoplay",
+          name: "autoplay",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Muted",
+          name: "muted",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Loop",
+          name: "loop",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Plays Inline",
+          name: "playsinline",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: false }

@@ -1,42 +1,49 @@
-<footer class="usa-footer site-footer" role="contentinfo">
-  <div class="usa-identifier site-identifier">
-    <section class="usa-identifier__section usa-identifier__section--masthead" aria-label="Agency identifier">
-        <div class="usa-identifier__container">
-            <div class="usa-identifier__logos">
-                <a href="https://www.gsa.gov">
-                    {% image_with_class "_img/gsa-logo.svg" "usa-identifier__logo" "GSA logo identifier" %}
-                </a>
-            </div>
-            <div class="usa-identifier__identity" aria-label="Agency description">
-                <p class="usa-identifier__identity-domain">cloud.gov</p>
-                <p class="usa-identifier__identity-disclaimer">
-                    An official website of the <a class="external_link" href="https://gsa.gov">General Services Administration</a>
-                </p>
-            </div>
+<footer class="usa-footer">
+  <div class="usa-footer__primary-section padding-y-8">
+    <div class="usa-footer__primary-container grid-row">
+      <div class="grid-col-auto">
+        <nav
+          class="usa-identifier__section usa-identifier__section--required-links"
+          aria-label="Important links"
+        >
+          <ul class="usa-identifier__required-links-list">
+            {% for nav_item in site.footer_navigation %}
+            <li class="usa-identifier__required-links-item">
+              <a href="{{nav_item.url}}" class="text-primary">
+                {{ nav_item.name }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <div class="desktop-lg:grid-col-4"></div>
+    </div>
+  </div>
+  <div class="usa-footer__secondary-section border-top border-base">
+    <div class="grid-container">
+      <div
+        class="usa-footer__logo grid-row grid-gap-2 text-center desktop:text-left"
+      >
+        <div class="grid-col-12 desktop:grid-col-auto">
+          <img
+            src="/node_modules/@uswds/uswds/dist/img/logo-img.png"
+            class="maxw-6"
+            alt="{{ site.title }}"
+          />
         </div>
-    </section>
-    <nav class="usa-identifier__section usa-identifier__section--required-links" aria-label="Important links">
-        <div class="usa-identifier__container">
-            <ul class="usa-identifier__required-links-list">
-                     {% for nav_item in site.footer_navigation %}
-                            <li class="usa-identifier__required-links-item">
-                        <a class="usa-identifier__required-link usa-link" href={{nav_item.url }}
-                          >{{nav_item.name}}</a
-                        >
-                </li>
-                      {% endfor %}
-
-
-
-
-            </ul>
+        <div class="grid-col-12 desktop:grid-col-fill">
+          <p class="usa-footer__logo-heading font-sans-lg">{{ site.title }}</p>
         </div>
-    </nav>
-    <section class="usa-identifier__section usa-identifier__section--usagov" aria-label="Government information and services">
-        <div class="usa-identifier__container">
-            <div class="usa-identifier__usagov-description">Looking for U.S. government information and services?</div>
-            <a href="https://www.usa.gov/" class="external_link">Visit USA.gov</a>
+        <div class="grid-col-12 desktop:grid-col-auto">
+          <ul
+            class="add-list-reset display-flex desktop:display-inline-flex flex-justify-center margin-bottom-2 desktop:margin-bottom-0"
+          >
+            {% include 'socialmedia.html' %}
+          </ul>
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a>
         </div>
-    </section>
+      </div>
+    </div>
   </div>
 </footer>

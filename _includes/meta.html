@@ -1,53 +1,60 @@
 {% comment %}
-You shouldn't have to edit this page very often. But if you want
-to modify some of the meta-data for the site, this is the place to do it.
+  You shouldn't have to edit this page very often. But if you want
+  to modify some of the meta-data for the site, this is the place to do it.
 {% endcomment %}
 
 <head>
-  <!-- Basic Page Needs
-    ================================================== -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Specific Metas
-    ================================================== -->
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Title and meta description
-    ================================================== -->
-  {% assign pageTitle = title | append: " | " | append: site.title  -%}
+  <!--
+    Basic Page Needs
+    ==================================================
+  -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--
+    Mobile Specific Metas
+    ==================================================
+  -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    Title and meta description
+    ==================================================
+  -->
+  {% assign pageTitle = title | append: ' | ' | append: site.title -%}
   {%- assign pageDesc = page.description | default: site.description -%}
-  {%- assign pageUrl = site.url | append: page.url  -%}
+  {%- assign pageUrl = site.url | append: page.url -%}
 
-  <title>{{pageTitle}}</title>
-  <meta property="og:title" content="{{ pageTitle }}" />
-  <meta name="description" content="{{ pageDesc }}" />
-  <meta property="og:description" content="{{ pageDesc }}" />
+  <title>{{ pageTitle }}</title>
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta name="description" content="{{ pageDesc }}">
+  <meta property="og:description" content="{{ pageDesc }}">
 
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary">
   {% if site.twitter -%}
-  <meta name="twitter:site" content="@{{site.twitter}}" />
+    <meta name="twitter:site" content="@{{site.twitter}}">
   {%- endif %}
-  <meta name="twitter:title" content="{{ pageTitle }}" />
-  <meta name="twitter:description" content="{{pageDesc}}" />
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{pageDesc}}">
 
-  <meta property="og:type" content="article" />
-  <link rel="canonical" href="{{ pageUrl }}" />
-  <meta property="og:url" content="{{ pageUrl }}" />
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="{{ pageUrl }}">
+  <meta property="og:url" content="{{ pageUrl }}">
 
   <script src="{{ assetPaths['uswds-init.js'] }}"></script>
-  <!-- CSS
-    ================================================== -->
-  <link rel="stylesheet" href="{{ assetPaths['styles.css'] }}" type="text/css" />
+  <!--
+    CSS
+    ==================================================
+  -->
+  <link rel="stylesheet" href="{{ assetPaths['styles.css'] }}" type="text/css">
 
   {% comment %}
-  Preload only the files that are needed for the content in the initial viewport. This
-  will likely include the fonts needed for the navigation, page heading, and the font needed for the
-  first paragraph of body copy. The `crossorigin` attribute may be required based on the type
-  of asset you wish to preload in order for the preload to work properly.
+    Preload only the files that are needed for the content in the initial viewport. This
+    will likely include the fonts needed for the navigation, page heading, and the font needed for the
+    first paragraph of body copy. The `crossorigin` attribute may be required based on the type
+    of asset you wish to preload in order for the preload to work properly.
   {% endcomment %}
   <link rel="preload" href="{{ assetPaths['PublicSans-Regular.woff2'] }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ assetPaths['PublicSans-Bold.woff2'] }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ assetPaths['Latin-Merriweather-Bold.woff2'] }}" as="font" type="font/woff2" crossorigin>
-
 </head>

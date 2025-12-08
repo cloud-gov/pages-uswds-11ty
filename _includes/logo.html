@@ -1,3 +1,14 @@
-<div class="usa-logo" id="extended-logo">
-  <em class="usa-logo__text"><a href="/" title="Home" aria-label="Home">{{site.title}}</a></em>
-</div>
+<a
+  href="/"
+  class="display-inline-flex flex-fill desktop:flex-auto flex-align-center desktop:margin-y-3 text-primary-dark text-no-underline"
+>
+  <img
+    src="/node_modules/@uswds/uswds/dist/img/logo-img.png"
+    class="margin-left-2 margin-right-2 display-block width-4 desktop:margin-left-0 desktop:width-10 circle logo-placeholder"
+    alt="{{site.title}}"
+  >
+  <span>
+    <span class="display-block font-sans-md desktop:font-sans-lg text-bold">{{ site.title }}</span>
+    <span class="display-none desktop:display-block font-sans-xs">Add your tagline here</span>
+  </span>
+</a>

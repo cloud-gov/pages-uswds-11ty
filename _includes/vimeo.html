@@ -1,0 +1,40 @@
+{%- comment -%}
+  Reusable Vimeo embed.
+  Params:
+  - id (required): Vimeo video ID.
+  - title (optional): iframe title attribute, defaults to "Vimeo video".
+  - autoplay, muted, loop, playsinline (optional booleans): set query params.
+  - aspect_ratio (optional): e.g., "16/9". Defaults to 16/9.
+  - video_caption (optional): caption text below the player.
+{%- endcomment -%}
+
+{%- assign video_id = id | default: vimeoId -%}
+{%- assign video_title = title | default: 'Vimeo video' -%}
+{%- assign aspect = aspect_ratio | default: '16/9' -%}
+
+{%- if video_id -%}
+  <figure class="margin-0">
+    <div class="position-relative" style="aspect-ratio: {{ aspect }};">
+      <iframe
+        src="https://player.vimeo.com/video/{{ video_id }}?dnt=1&transparent=0{% if autoplay %}&autoplay=1{% endif %}{% if muted %}&muted=1{% endif %}{% if loop %}&loop=1{% endif %}{% if playsinline %}&playsinline=1{% endif %}"
+        title="{{ video_title | escape }}"
+        loading="lazy"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        class="display-block width-full height-full"
+        style="border: 0;"
+      ></iframe>
+    </div>
+    {%- if video_caption -%}
+      <figcaption class="usa-prose font-sans-xs text-base-dark margin-top-1">
+        {{ video_caption }}
+      </figcaption>
+    {%- endif -%}
+  </figure>
+{%- else -%}
+  <div class="usa-alert usa-alert--info margin-y-2" role="status">
+    <div class="usa-alert__body">
+      <p class="usa-alert__text">Video embed unavailable: missing Vimeo ID.</p>
+    </div>
+  </div>
+{%- endif -%}
