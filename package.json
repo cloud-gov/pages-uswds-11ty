@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "A 11ty UWDS template.",
   "main": "index.js",
+  "engines": {
+    "node": ">=22 <23",
+    "npm": ">=10 <11"
+  },
   "scripts": {
     "build": "npm run assets:build && npx @11ty/eleventy",
     "assets:autoprefix": "postcss _site/assets/styles/*.css -r",
