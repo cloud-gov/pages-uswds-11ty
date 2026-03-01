@@ -50,6 +50,6 @@
   "dependencies": {
     "@uswds/uswds": "^3.8.2",
     "csv-parse": "^5.6.0",
-    "decap-cms": "^3.3.3"
+    "decap-cms": "^3.10.0"
   }
 }
