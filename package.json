@@ -4,8 +4,8 @@
   "description": "A 11ty UWDS template.",
   "main": "index.js",
   "engines": {
-    "node": ">=22 <23",
-    "npm": ">=10 <11"
+    "node": "^24",
+    "npm": "^11.10.0"
   },
   "scripts": {
     "build": "npm run assets:build && npx @11ty/eleventy",
@@ -45,7 +45,7 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.10",
     "postcss-cli": "^11.0.0",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.1.3"
   },
   "dependencies": {
     "@uswds/uswds": "^3.8.2",
